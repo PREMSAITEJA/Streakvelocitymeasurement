@@ -1,6 +1,6 @@
 # HighFPSRecorder
 
-Android app (Java + Camera2 + MediaRecorder) to record high-FPS video, targeting `15/ 30 / 60 / 240(burst mode)fps` when the device camera supports it.
+Android app (Java + Camera2 + MediaRecorder) to record high-FPS video, targeting `15 / 30 / 60 / 240fps` when the device camera supports it.
 
 ## Project Info
 
@@ -15,8 +15,8 @@ Android app (Java + Camera2 + MediaRecorder) to record high-FPS video, targeting
 - **Camera Selection**: Back camera preferred; fallback to front if unavailable.
 - **FPS Range Discovery**: Queries device camera capabilities for supported frame rates.
 - **Adaptive High-FPS Recording**:
-  - Attempts exact `15/ 30 / 60 / 240(burst mode),15/ 30 / 60 / 240(burst mode)` FPS when supported.
-  - Falls back to highest available FPS range if 15/ 30 / 60 / 240(burst mode) unavailable.
+  - Attempts exact `240,240` FPS when supported.
+  - Falls back to highest available FPS range if 240 unavailable.
   - Supports high-speed constrained capture sessions (API 34+) for true high-FPS recording.
 - **Live Preview**: TextureView-based camera preview while recording.
 - **Camera Info Display**: Button to inspect detected camera capabilities and supported FPS ranges.
@@ -24,8 +24,8 @@ Android app (Java + Camera2 + MediaRecorder) to record high-FPS video, targeting
 
 ## Important Device Note
 
-Not every device supports true `15/ 30 / 60 / 240(burst mode)fps` with Camera2 + MediaRecorder at `1920x1080`.
-- **S25+** and flagship devices typically support 15/ 30 / 60 / 240(burst mode)fps.
+Not every device supports true `240fps` with Camera2 + MediaRecorder at `1920x1080`.
+- **S25+** and flagship devices typically support 240fps.
 - If unsupported, camera/session configuration falls back to the highest available FPS range.
 - The app auto-detects constrained high-speed video capability (API 34+) and uses it if available.
 
@@ -36,13 +36,13 @@ Not every device supports true `15/ 30 / 60 / 240(burst mode)fps` with Camera2 +
 3. **Connect Device**: USB debug mode enabled on S25+.
 4. **Run App**: Click *Run* or press `Shift+F10`.
 5. **Grant Permissions**: On first launch, approve camera/microphone access.
-6. **Verify Camera**: Tap "Camera Info" to see detected capabilities (should list FPS ranges ≥15/ 30 / 60 / 240(burst mode)).
-7. **Record**: Tap "Start 15/ 30 / 60 / 240(burst mode)fps Recording", then tap again to stop.
+6. **Verify Camera**: Tap "Camera Info" to see detected capabilities (should list FPS ranges ≥240).
+7. **Record**: Tap "Start 240fps Recording", then tap again to stop.
 
 ### Output Location
 
 ```
-/storage/emulated/0/Android/data/com.example.highfps/files/output_YYYYMMDD_HHMMSS_15/ 30 / 60 / 240(burst mode)fps.mp4
+/storage/emulated/0/Android/data/com.example.highfps/files/output_YYYYMMDD_HHMMSS_240fps.mp4
 ```
 
 ## Verify FPS (optional)
@@ -53,11 +53,11 @@ Once transferred to a desktop, inspect the recorded file:
 ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate,avg_frame_rate -of default=noprint_wrappers=1:nokey=0 /path/to/output_file.mp4
 ```
 
-Expected output (if true 15/ 30 / 60 / 240(burst mode)fps):
+Expected output (if true 240fps):
 
 ```
-r_frame_rate=15/ 30 / 60 / 240(burst mode)/1
-avg_frame_rate=15/ 30 / 60 / 240(burst mode)/1
+r_frame_rate=240/1
+avg_frame_rate=240/1
 ```
 
 ## Quick Local Harness (no Android runtime)
@@ -74,7 +74,10 @@ java -cp out com.example.highfps.FpsSelectorHarness
 Expected output:
 
 ```
-Selected FPS range: [15/ 30 / 60 / 240(burst mode), 15/ 30 / 60 / 240(burst mode)]
+Selected FPS range: [15, 15]
+Selected FPS range: [30, 30]
+Selected FPS range: [60, 60]
+Selected FPS range: [240, 240]
 ```
 
 ## Gradle Commands
@@ -162,7 +165,7 @@ HighFPSRecorder/
 ## Next Steps
 
 1. **Build & Deploy**: Run `./gradlew assembleDebug` on S25+ or Android Studio to install.
-2. **Test Recording**: Grant permissions, tap Camera Info to verify 15/ 30 / 60 / 240(burst mode)fps support, then record a short clip.
+2. **Test Recording**: Grant permissions, tap Camera Info to verify 240fps support, then record a short clip.
 3. **Verify Output**: Use `ffprobe` (or Android File Manager) to confirm video properties.
 4. **Optimize**: Adjust bitrate (`20_000_000` bps), resolution (`1920x1080`), or codec if needed.
 
