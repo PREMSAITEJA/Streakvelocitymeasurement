@@ -966,19 +966,44 @@ public class ResultsActivity extends AppCompatActivity {
             for (int i=0;i<W;i+=50) canvas.drawLine(i,0,i,H,gridPaint);
             for (int i=0;i<H;i+=50) canvas.drawLine(0,i,W,i,gridPaint);
             if (vectors.isEmpty()) { canvas.drawText("No vectors",20,50,textPaint); canvas.restore(); return; }
+
+            // ── Dynamic K-factor (vscale) ─────────────────────────────────
+            // Mirrors the MATLAB analyzeStreaksMulti logic:
+            //   vscale = (image_diagonal * 0.07) / max(magnitude)
+            // Using the CANVAS diagonal (actual on-screen pixels) instead of a
+            // hardcoded pixel count means arrows stay a consistent, visible
+            // proportion of the view regardless of screen density/resolution.
+            float canvasDiag = (float) Math.sqrt((double) W * W + (double) H * H);
+            float vscale = maxMag > 0f ? (canvasDiag * 0.07f) / maxMag : 1f;
+
+            // Floor/ceiling (in px) so a near-zero vector is still tappable-visible
+            // and a runaway outlier can't swamp the whole field.
+            float minArrowLen = canvasDiag * 0.01f;
+            float maxArrowLen = canvasDiag * 0.15f;
+
             for (VectorData vec : vectors) {
                 float sx=vec.x*scale, sy=vec.y*scale;
                 int col = jetColor(vec.magnitude, minMag, maxMag); arrowPaint.setColor(col);
-                float as = Math.max(2f, 30*(vec.magnitude-minMag)/(maxMag-minMag+0.001f));
-                float ex = sx+(float)(Math.cos(Math.toRadians(vec.angle))*as);
-                float ey = sy-(float)(Math.sin(Math.toRadians(vec.angle))*as);
+
+                // Raw physically-scaled displacement (matches MATLAB's u*vscale, v*vscale)
+                float dx = vec.u * vscale, dy = vec.v * vscale;
+                float len = (float) Math.sqrt(dx*dx + dy*dy);
+                if (len > 0f) {
+                    float clamped = Math.max(minArrowLen, Math.min(maxArrowLen, len));
+                    dx = dx / len * clamped;
+                    dy = dy / len * clamped;
+                }
+                float ex = sx + dx, ey = sy + dy;
                 canvas.drawLine(sx,sy,ex,ey,arrowPaint);
-                drawHead(canvas,sx,sy,ex,ey,col);
+                drawHead(canvas,sx,sy,ex,ey,col,clampHeadSize(canvasDiag));
             }
             drawColorBar(canvas,W-40,20,20,150); canvas.restore();
         }
-        private void drawHead(Canvas c,float x1,float y1,float x2,float y2,int col) {
-            float hl=8f,a=(float)Math.atan2(y2-y1,x2-x1); Paint p=new Paint(); p.setColor(col);
+        private float clampHeadSize(float canvasDiag) {
+            return Math.max(6f, Math.min(16f, canvasDiag * 0.012f));
+        }
+        private void drawHead(Canvas c,float x1,float y1,float x2,float y2,int col,float hl) {
+            float a=(float)Math.atan2(y2-y1,x2-x1); Paint p=new Paint(); p.setColor(col); p.setStrokeWidth(3f); p.setAntiAlias(true);
             c.drawLine(x2,y2,(float)(x2-hl*Math.cos(a-Math.PI/6)),(float)(y2-hl*Math.sin(a-Math.PI/6)),p);
             c.drawLine(x2,y2,(float)(x2-hl*Math.cos(a+Math.PI/6)),(float)(y2-hl*Math.sin(a+Math.PI/6)),p);
         }
@@ -1048,15 +1073,28 @@ public class ResultsActivity extends AppCompatActivity {
             canvas.restore();
         }
         private void drawFrameVectors(Canvas c,List<VectorData> vecs,int alpha){
+            int W = getWidth(), H = getHeight();
+            float canvasDiag = (float) Math.sqrt((double) W * W + (double) H * H);
+            float vscale = maxMag > 0f ? (canvasDiag * 0.07f) / maxMag : 1f;
+            float minArrowLen = canvasDiag * 0.01f;
+            float maxArrowLen = canvasDiag * 0.15f;
+            float hl = Math.max(6f, Math.min(16f, canvasDiag * 0.012f));
+
             for(VectorData v:vecs){
                 float sx=v.x*scale,sy=v.y*scale;
                 int base=jetColor(v.magnitude),col=Color.argb(alpha,Color.red(base),Color.green(base),Color.blue(base));
                 arrowPaint.setColor(col);
-                float as=Math.max(2f,30*(v.magnitude-minMag)/(maxMag-minMag+0.001f));
-                float ex=sx+(float)(Math.cos(Math.toRadians(v.angle))*as);
-                float ey=sy-(float)(Math.sin(Math.toRadians(v.angle))*as);
+
+                float dx = v.u * vscale, dy = v.v * vscale;
+                float len = (float) Math.sqrt(dx*dx + dy*dy);
+                if (len > 0f) {
+                    float clamped = Math.max(minArrowLen, Math.min(maxArrowLen, len));
+                    dx = dx / len * clamped;
+                    dy = dy / len * clamped;
+                }
+                float ex=sx+dx, ey=sy+dy;
                 c.drawLine(sx,sy,ex,ey,arrowPaint);
-                Paint p=new Paint(); p.setColor(col); float hl=8f,a=(float)Math.atan2(ey-sy,ex-sx);
+                Paint p=new Paint(); p.setColor(col); p.setAntiAlias(true); float a=(float)Math.atan2(ey-sy,ex-sx);
                 c.drawLine(ex,ey,(float)(ex-hl*Math.cos(a-Math.PI/6)),(float)(ey-hl*Math.sin(a-Math.PI/6)),p);
                 c.drawLine(ex,ey,(float)(ex-hl*Math.cos(a+Math.PI/6)),(float)(ey-hl*Math.sin(a+Math.PI/6)),p);
             }
