@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="2"
+        android:rowCount="2">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="0dp"
+            android:layout_columnWeight="1" android:layout_rowWeight="1"
+            android:orientation="vertical" android:padding="2dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Original" android:textColor="#FFF" android:textSize="11sp"/>
+            <com.example.highfps.ZoomableImageView android:id="@+id/ivStageOriginal" android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#000"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="0dp"
+            android:layout_columnWeight="1" android:layout_rowWeight="1"
+            android:orientation="vertical" android:padding="2dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Enhanced" android:textColor="#FFF" android:textSize="11sp"/>
+            <com.example.highfps.ZoomableImageView android:id="@+id/ivStageEnhanced" android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#000"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="0dp"
+            android:layout_columnWeight="1" android:layout_rowWeight="1"
+            android:orientation="vertical" android:padding="2dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Threshold" android:textColor="#FFF" android:textSize="11sp"/>
+            <com.example.highfps.ZoomableImageView android:id="@+id/ivStageThreshold" android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#000"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="0dp"
+            android:layout_columnWeight="1" android:layout_rowWeight="1"
+            android:orientation="vertical" android:padding="2dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Final Vectors" android:textColor="#FFF" android:textSize="11sp"/>
+            <com.example.highfps.ZoomableImageView android:id="@+id/ivStageFinal" android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#000"/>
+        </LinearLayout>
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:background="#222">
+        <Button android:id="@+id/btnAnalysisPrev" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="◀"/>
+        <TextView android:id="@+id/tvAnalysisFrameIdx" android:layout_width="120dp" android:layout_height="wrap_content"
+            android:text="Frame: 1 / --" android:textColor="#FFF" android:gravity="center" android:textStyle="bold"/>
+        <Button android:id="@+id/btnAnalysisNext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="▶"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:background="#1A1A1A"
+        android:padding="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox android:id="@+id/cbEnableThresh" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Apply Threshold Cutoff" android:textColor="#FFC107" android:textSize="12sp" android:textStyle="bold" android:checked="true"/>
+            <TextView android:id="@+id/lblSliderThresh" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Threshold Cutoff: 128" android:textColor="#BBB" android:textSize="12sp"/>
+            <SeekBar android:id="@+id/sbSliderThresh" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="255" android:progress="128" android:layout_marginBottom="8dp"/>
+
+            <CheckBox android:id="@+id/cbEnableNoise" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Apply Noise Filter" android:textColor="#FFC107" android:textSize="12sp" android:textStyle="bold" android:checked="true"/>
+            <TextView android:id="@+id/lblSliderNoise" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Noise Filter Radius (Median): 2px" android:textColor="#BBB" android:textSize="12sp"/>
+            <SeekBar android:id="@+id/sbSliderNoise" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="10" android:progress="2" android:layout_marginBottom="8dp"/>
+
+            <CheckBox android:id="@+id/cbEnableArea" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Apply Min Streak Tracking Area" android:textColor="#FFC107" android:textSize="12sp" android:textStyle="bold" android:checked="true"/>
+            <TextView android:id="@+id/lblSliderArea" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Min Streak Tracking Area: 50 px²" android:textColor="#BBB" android:textSize="12sp"/>
+            <SeekBar android:id="@+id/sbSliderArea" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="500" android:progress="50" android:layout_marginBottom="8dp"/>
+
+            <CheckBox android:id="@+id/cbEnableClahe" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Apply CLAHE" android:textColor="#FFC107" android:textSize="12sp" android:textStyle="bold" android:checked="true"/>
+            <TextView android:id="@+id/lblSliderClahe" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="CLAHE Contrast Window: 64px" android:textColor="#BBB" android:textSize="12sp"/>
+            <SeekBar android:id="@+id/sbSliderClahe" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="120" android:progress="64" android:layout_marginBottom="12dp"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333" android:layout_marginBottom="8dp"/>
+
+            <TextView android:id="@+id/lblFrameRange" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Custom range: frame 1 to -- of -- recorded" android:textColor="#FFC107" android:textSize="12sp" android:textStyle="bold"/>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Range start frame" android:textColor="#BBB" android:textSize="11sp" android:layout_marginTop="4dp"/>
+            <SeekBar android:id="@+id/sbRangeStart" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="1" android:progress="0" android:layout_marginBottom="4dp"/>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Range end frame" android:textColor="#BBB" android:textSize="11sp"/>
+            <SeekBar android:id="@+id/sbRangeEnd" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="1" android:progress="1" android:layout_marginBottom="12dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/btnActionAnalyzeAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#2E7D32"
+            android:text="Analyze All"
+            android:textColor="#FFF"/>
+        <Button
+            android:id="@+id/btnActionExportDownloads"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:backgroundTint="#1565C0"
+            android:text="Export Packages"
+            android:textColor="#FFF"
+            android:enabled="false"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_record"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Record" />
+    <item
+        android:id="@+id/nav_media"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="Media" />
+    <item
+        android:id="@+id/nav_results"
+        android:enabled="true"
+        android:icon="@drawable/ic_archive"
+        android:title="Results" />
+</menu>

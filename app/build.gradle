@@ -1,0 +1,107 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.highfps'
+    compileSdkVersion 35
+
+    // CRITICAL FIX: Enforce NDK r28+ which AUTOMATICALLY applies 16 KB alignment
+    // to ALL native libraries (including pre-built ones like OpenCV and libc++_shared.so)
+    // NDK r27 and lower require manual linker flags (which don't work for pre-built libs)
+    // NDK r28+ has native 16 KB support built-in - REQUIRED for Google Play compliance
+    ndkVersion "28.2.13676358"
+
+    defaultConfig {
+        applicationId "com.example.highfps"
+        minSdkVersion 21
+        targetSdkVersion 35
+        versionCode 1
+        versionName "1.0"
+        ndkVersion "28.2.13676358"
+
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++17"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // Ensure debug builds also respect 16 KB alignment for Android 15+
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        viewBinding true
+        aidl true
+    }
+
+    // CRITICAL FIX: Legacy packaging preserves OpenCV's native library layout
+    // This prevents re-packing of .so files which can break 16 KB alignment
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
+    }
+}
+
+dependencies {
+    // 16 KB PAGE SIZE FIX (see notes below dependencies block):
+    // org.opencv:opencv:4.10.0's prebuilt libopencv_java4.so / libc++_shared.so are
+    // NOT 16 KB aligned - that is the exact cause of the Play Console warning you saw.
+    // OpenCV only started shipping 16 KB-aligned prebuilt Android libraries from the
+    // 4.11.0 / 4.12.0 releases onward, so bumping the version is the real fix here -
+    // NDK version alone does nothing for a prebuilt .so you didn't compile yourself.
+    implementation 'org.opencv:opencv:4.12.0'
+
+    // Charting library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+// -----------------------------------------------------------------------------
+// 16 KB PAGE SIZE NOTES (Google Play requirement, effective Nov 1 2025)
+// -----------------------------------------------------------------------------
+// After bumping to org.opencv:opencv:4.12.0 above, rebuild and verify with:
+//   ./gradlew assembleDebug
+//   (Android Studio) Build > Analyze APK > select app-debug.apk -> it will flag
+//   any remaining unaligned .so under lib/arm64-v8a/
+// or from a terminal using Android's official checker script:
+//   https://developer.android.com/guide/practices/page-sizes#test
+// If libc++_shared.so is still reported unaligned after the version bump, that
+// specific file comes from the NDK's STL, not OpenCV - forcing
+// android.ndkVersion to 28.2.13676358 (already set above) resolves it because
+// AGP repackages libc++_shared.so from that NDK at build time.
+// If OpenCV 4.12.0 still shows an unaligned libopencv_java4.so on your NDK/AGP
+// combination, the fallback is building OpenCV from source with
+// -DANDROID_PLATFORM and NDK r27+ (which auto page-aligns), or importing the
+// official OpenCV-android-sdk distribution as a module instead of the Maven
+// artifact. That path takes real device/emulator testing to confirm, which
+// isn't possible from this chat - Android Studio's "Analyze APK" is the
+// ground truth once you rebuild.

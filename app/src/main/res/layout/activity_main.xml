@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://tools.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    tools:context=".MainActivity">
+
+    <TextureView
+        android:id="@+id/textureView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/panelControls"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/panelTelemetry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_lg"
+        android:background="#99000000"
+        android:orientation="vertical"
+        android:padding="@dimen/session_card_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/headerBle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/spacing_xs">
+
+            <TextView
+                android:id="@+id/tvBleHeaderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WIRELESS BLE ENVIRONMENTAL SENSORS"
+                android:textColor="#00E676"
+                android:textSize="@dimen/ble_header_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerBleBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvBleStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="BLE Status: Scanning..."
+                android:textColor="#00E676"
+                android:textSize="@dimen/text_subhead"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/tvCo2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CO2: -- ppm"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/telemetry_value_text" />
+
+                <TextView
+                    android:id="@+id/tvTemp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Temp: -- °C"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/telemetry_value_text" />
+
+                <TextView
+                    android:id="@+id/tvHumidity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hum: -- %"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/telemetry_value_text" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFrameCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginStart="@dimen/spacing_lg"
+        android:background="#80000000"
+        android:padding="@dimen/spacing_sm"
+        android:text="Frames: 0"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/text_subhead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/panelTelemetry" />
+
+    <ImageButton
+        android:id="@+id/btnFpsSelector"
+        android:layout_width="@dimen/icon_size_md"
+        android:layout_height="@dimen/icon_size_md"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginEnd="@dimen/spacing_lg"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Select Frame Rate Options"
+        android:src="@android:drawable/ic_menu_manage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/panelTelemetry"
+        app:tint="#FFFFFF" />
+
+    <LinearLayout
+        android:id="@+id/panelControls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#CC1A1A1A"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_lg"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/headerBrightness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/spacing_xs"
+            android:paddingBottom="@dimen/spacing_xs">
+
+            <TextView
+                android:id="@+id/tvBrightnessHeaderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SENSOR EXPOSURE / BRIGHTNESS"
+                android:textColor="#E0E0E0"
+                android:textSize="@dimen/ble_header_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerBrightnessBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvBrightnessLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="Brightness: 5"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_body" />
+
+            <SeekBar
+                android:id="@+id/seekBarBrightness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:layout_marginBottom="@dimen/spacing_md" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/headerFocus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/spacing_xs"
+            android:paddingBottom="@dimen/spacing_xs">
+
+            <TextView
+                android:id="@+id/tvFocusHeaderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BLACKMAGIC OPTICAL LENS FOCUS"
+                android:textColor="#E0E0E0"
+                android:textSize="@dimen/ble_header_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerFocusBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvFocusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="Focus: 5"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_body" />
+
+            <SeekBar
+                android:id="@+id/seekBarFocus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:layout_marginBottom="@dimen/spacing_lg" />
+
+            <TextView
+                android:id="@+id/tvExposureTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="Exposure Time: Auto"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_body" />
+
+            <SeekBar
+                android:id="@+id/seekBarExposureTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:layout_marginBottom="@dimen/spacing_lg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/spacing_sm">
+
+            <Button
+                android:id="@+id/btnRecord"
+                android:layout_width="@dimen/button_min_width"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_md"
+                android:backgroundTint="#1E88E5"
+                android:text="Record"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_body" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="@dimen/button_min_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_md"
+                android:backgroundTint="#D32F2F"
+                android:text="Stop"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_body" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#212121"
+        app:backgroundTint="#212121"
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#FFFFFF"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

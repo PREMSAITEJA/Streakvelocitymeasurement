@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive icon foreground layer for HighFPSRecorder.
+  Contains the 6-segment camera-aperture + cyan motion lines + lime waveform artwork from
+  ic_highfps_recorder.xml, with the flat background path removed (that lives in
+  ic_highfps_recorder_background.xml instead). The artwork already sits inside the
+  108dp-canvas / ~72dp-safe-zone convention, so no rescaling was needed - only the
+  background fill was pulled out into its own layer.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Central circular aperture (6-segment camera diaphragm) -->
+    <!-- Segment 1 (top) -->
+    <path
+        android:fillColor="#1A3A52"
+        android:pathData="M 54,32 L 64,45 L 54,50 Z" />
+    <!-- Segment 2 (top-right) -->
+    <path
+        android:fillColor="#244459"
+        android:pathData="M 64,45 L 68,58 L 58,54 Z" />
+    <!-- Segment 3 (bottom-right) -->
+    <path
+        android:fillColor="#1A3A52"
+        android:pathData="M 68,58 L 54,68 L 50,58 Z" />
+    <!-- Segment 4 (bottom) -->
+    <path
+        android:fillColor="#244459"
+        android:pathData="M 54,68 L 40,55 L 50,58 Z" />
+    <!-- Segment 5 (bottom-left) -->
+    <path
+        android:fillColor="#1A3A52"
+        android:pathData="M 40,55 L 40,42 L 50,50 Z" />
+    <!-- Segment 6 (top-left) -->
+    <path
+        android:fillColor="#244459"
+        android:pathData="M 40,42 L 54,32 L 54,50 Z" />
+
+    <!-- Inner circle (aperture center) as path (VectorDrawable does not support <circle>) -->
+    <path
+        android:fillColor="#0F2740"
+        android:pathData="M62,50 A8,8 0 1,0 46,50 A8,8 0 1,0 62,50 Z" />
+
+    <!-- Cyan motion lines (left, motion blur effect) -->
+    <path
+        android:strokeColor="#00FFFF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M 18,48 L 32,48" />
+    <path
+        android:strokeColor="#00FFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M 18,54 L 28,54" />
+    <path
+        android:strokeColor="#00FFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M 18,60 L 23,60" />
+
+    <!-- Lime waveform (right, data visualization) -->
+    <path
+        android:strokeColor="#32CD32"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M 76,54 Q 81,49 86,54 Q 91,59 96,54" />
+    <path
+        android:strokeColor="#32CD32"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M 76,62 Q 81,59 86,62 Q 91,65 96,62" />
+
+    <!-- Subtle highlight circle around aperture for depth (stroke only) -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#1A5F7A"
+        android:strokeWidth="1.5"
+        android:pathData="M72,50 A18,18 0 1,0 36,50 A18,18 0 1,0 72,50 Z" />
+
+</vector>

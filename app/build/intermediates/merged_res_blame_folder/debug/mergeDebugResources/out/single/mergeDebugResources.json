@@ -1,0 +1,118 @@
+[
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_activity_sensor_data_viewer.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/activity_sensor_data_viewer.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_page_vector_field.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/page_vector_field.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_item_session_folder.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/item_session_folder.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/drawable_ic_archive.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/drawable/ic_archive.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/menu_bottom_navigation_menu.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/menu/bottom_navigation_menu.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_activity_analysis.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/activity_analysis.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/xml_backup_rules.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_activity_media.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/activity_media.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/drawable_ic_highfps_recorder.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/drawable/ic_highfps_recorder.xml"
+    },
+    {
+        "merged": "com.example.highfps.app-debug-33:/layout_activity_main.xml.flat",
+        "source": "com.example.highfps.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_activity_results.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/activity_results.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/xml_data_extraction_rules.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_page_sensor_charts.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/page_sensor_charts.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_item_sensor_data.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/item_sensor_data.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/drawable_ic_highfps_recorder_foreground.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/drawable/ic_highfps_recorder_foreground.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/layout_activity_main.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-debug-33:/drawable_ic_highfps_recorder_background.xml.flat",
+        "source": "/home/fmea01/.gradle/daemon/9.4.1/com.example.highfps.app-main-35:/drawable/ic_highfps_recorder_background.xml"
+    }
+]
