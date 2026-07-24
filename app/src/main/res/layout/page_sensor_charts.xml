@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carbon Dioxide Levels"
+            android:textColor="#E0E0E0"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartCo2"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="#1E1E1E"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ambient Temperature Stream"
+            android:textColor="#E0E0E0"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartTemp"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="#1E1E1E"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relative Humidity Profile"
+            android:textColor="#E0E0E0"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="#1E1E1E"
+            android:layout_marginBottom="30dp"/>
+    </LinearLayout>
+</ScrollView>

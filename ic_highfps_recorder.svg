@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108">
+  <!-- SVG Export of ic_highfps_recorder.xml for cross-platform branding -->
+
+  <!-- Deep navy background -->
+  <rect width="108" height="108" fill="#0D1B2A"/>
+
+  <!-- Central circular aperture (6-segment camera diaphragm) -->
+  <!-- Segment 1 (top) -->
+  <polygon points="54,32 64,45 54,50" fill="#1A3A52"/>
+
+  <!-- Segment 2 (top-right) -->
+  <polygon points="64,45 68,58 58,54" fill="#244459"/>
+
+  <!-- Segment 3 (bottom-right) -->
+  <polygon points="68,58 54,68 50,58" fill="#1A3A52"/>
+
+  <!-- Segment 4 (bottom) -->
+  <polygon points="54,68 40,55 50,58" fill="#244459"/>
+
+  <!-- Segment 5 (bottom-left) -->
+  <polygon points="40,55 40,42 50,50" fill="#1A3A52"/>
+
+  <!-- Segment 6 (top-left) -->
+  <polygon points="40,42 54,32 54,50" fill="#244459"/>
+
+  <!-- Inner circle (aperture center) -->
+  <circle cx="54" cy="50" r="8" fill="#0F2740"/>
+
+  <!-- Cyan motion lines (left, motion blur effect) -->
+  <line x1="18" y1="48" x2="32" y2="48" stroke="#00FFFF" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="18" y1="54" x2="28" y2="54" stroke="#00FFFF" stroke-width="2" stroke-linecap="round"/>
+  <line x1="18" y1="60" x2="23" y2="60" stroke="#00FFFF" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Lime waveform (right, data visualization) -->
+  <path d="M 76,54 Q 81,49 86,54 Q 91,59 96,54" stroke="#32CD32" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M 76,62 Q 81,59 86,62 Q 91,65 96,62" stroke="#32CD32" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Subtle highlight circle around aperture for depth -->
+  <circle cx="54" cy="50" r="18" fill="none" stroke="#1A5F7A" stroke-width="1.5"/>
+</svg>
+
